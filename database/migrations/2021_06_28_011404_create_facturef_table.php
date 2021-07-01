@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 class CreateFacturefTable extends Migration
 {
     /**
@@ -13,9 +12,9 @@ class CreateFacturefTable extends Migration
      */
     public function up()
     {
-        Schema::create('facturef', function (Blueprint $table) {
+        Schema::create('facturefs', function (Blueprint $table) {
             $table->id();
-            $table->float('Montant_TTC');
+            $table->double('Montant_TTC');
             $table->float('Montant_TVA');
             $table->float('Total_HT');
             $table->unsignedBigInteger('id_fournisseur') ;
@@ -31,7 +30,6 @@ class CreateFacturefTable extends Migration
             $table->date('date_creation');
         });
     }
-
     /**
      * Reverse the migrations.
      *

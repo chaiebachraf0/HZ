@@ -16,31 +16,19 @@ class facturefController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function DetailsFournisseurs($id){
-
         $fournisseur = fournisseur::find($id);
-
         return response()->json($fournisseur);
-
-
     }
     public function DetailsProduits($id){
         $product = product::find($id);
         $List=[
-
-            $product->Libellé,
+            $product->name,
             $product->TVA,
-            $product->PRIX_VENTE,
-            $product->Taxe_Applique
-
+            $product->pricev,
+            $product->typetaxe
         ];
         return response()->json($List);
-
-
     }
-
-
-
-
     public function cherchefournisseur($id){
 
 /*         $fournisseur= Fournisseur::where('id', '=', $id)->first();
@@ -141,32 +129,20 @@ class facturefController extends Controller
         $facturef->note = $request->note;
         $facturef->Timbre_fiscale = $request->Timbre_fiscale;
         // $facture->Libelle = $request->Libelle;
-
         $facturef->date_creation = $request->date_creation;
         // $facture->Taxe_Applique = $request->Taxe_Applique;
-
-
         // $facture->ListProduct = $request->ListProduct;
 /*         $facture->ListProduct = [];
  */
         $facturef->save();
-
-
         foreach ($request->ListProduct as $prod) {
-
             $listproduct = new ListProductAchat();
             $listproduct->quantite=$prod["quantite"];
             $listproduct->Libelle=$prod["Libelle"];
             $listproduct->id_product=$prod["id_product"];
             $listproduct->id_facture=$facturef->id;
-
-
-
             $listproduct->save();
-
-
         }
-
         return response()->json('Facture saved');
     }
 

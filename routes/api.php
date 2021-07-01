@@ -68,4 +68,5 @@ Route::delete('rachat/deletefournisseur/{id}','fournisseurController@deleteFourn
 //nombre des fournisseurs
 Route::get('rachat/nbfn','fournisseurController@nombreFournisseur');
 //facturefournisseurs
-Route::apiResource('/facturef', 'factureController');
+Route::apiResource('facturef', 'facturefController');
+Route::apiResource('facture','factureController');
