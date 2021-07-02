@@ -23,6 +23,7 @@ class CreateListProductVenteTable extends Migration
             $table->unsignedBigInteger('facture_id') ;
             $table->foreign('facture_id')->references('id')->on('factures'); */
             $table->timestamps();
+            
         });
     }
 

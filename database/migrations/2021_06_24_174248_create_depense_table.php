@@ -16,11 +16,11 @@ class CreateDepenseTable extends Migration
         Schema::create('depenses', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['Chèque','Traite'])->default('Chèque');
-            $table->string(column:'fournisseur');
-            $table->double(column:'montant');
-            $table->string(column:'categorie');
-            $table->date(column:'datereg');
-            $table->string(column:'note');
+            $table->string('fournisseur');
+            $table->double('montant');
+            $table->string('categorie');
+            $table->date('datereg');
+            $table->string('note');
             $table->timestamps();
         });
     }

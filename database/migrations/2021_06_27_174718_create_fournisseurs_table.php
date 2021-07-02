@@ -15,14 +15,14 @@ class CreateFournisseursTable extends Migration
     {
         Schema::create('fournisseurs', function (Blueprint $table) {
             $table->id();
-            $table->string(column:'NOM');
+            $table->string('NOM');
             $table->enum('CIVILITE', ['M','Mme'])->default('M');
-            $table->string(column:'RAISONSOCIALE');
-            $table->string(column:'EMAIL');
-            $table->string(column:'ADRESSE');
-            $table->string(column:'NTELEPHONE');
-            $table->string(column:'IDENTIFIANT');
-            $table->string(column:'MATFISCALE');
+            $table->string('RAISONSOCIALE');
+            $table->string('EMAIL');
+            $table->string('ADRESSE');
+            $table->string('NTELEPHONE');
+            $table->string('IDENTIFIANT');
+            $table->string('MATFISCALE');
             $table->timestamps();
         });
     }

@@ -15,15 +15,15 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string(column:'name');
+            $table->string('name');
             $table->enum('type', ['particulier','professionel'])->default('particulier');
-            $table->string(column:'raisonsociale');
-            $table->double(column:'matfiscale');
+            $table->string('raisonsociale');
+            $table->double('matfiscale');
             $table->enum('civilite', ['M','Mme'])->default('M');
-            $table->string(column:'email');
-            $table->string(column:'adress');
-            $table->date(column:'delai');
-            $table->string(column:'ntelephone');
+            $table->string('email');
+            $table->string('adress');
+            $table->date('delai');
+            $table->string('ntelephone');
             $table->timestamps();
         });
     }

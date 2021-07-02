@@ -16,10 +16,10 @@ class CreateOperationsTable extends Migration
             $table->id();
             $table->enum('mode', ['Chèque','Espèces'])->default('Chèque');
             $table->enum('typep', ['Débit','Crédit'])->default('Débit');
-            $table->string(column:'categorie');
-            $table->double(column:'montant');
-            $table->date(column:'datereg');
-            $table->string(column:'note');
+            $table->string('categorie');
+            $table->double('montant');
+            $table->date('datereg');
+            $table->string('note');
             $table->timestamps();
         });
     }
