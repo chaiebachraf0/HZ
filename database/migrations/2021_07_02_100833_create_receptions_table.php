@@ -13,7 +13,7 @@ class CreateReceptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('receptions', function (Blueprint $table) {
+        Schema::create('bondereceptions', function (Blueprint $table) {
             $table->id();
             $table->double('Montant_TTC');
             $table->float('Montant_TVA');
@@ -39,6 +39,6 @@ class CreateReceptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receptions');
+        Schema::dropIfExists('bondereceptions');
     }
 }

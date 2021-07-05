@@ -73,7 +73,7 @@ class BonDeReceptionController extends Controller
         // $facture->Libelle = $request->Libelle;
         $bondereception->date_creation = $request->date_creation;
         $bondereception->save();
-        foreach ($request->ListProduct as $prod) {
+        foreach ($request->Listproduct as $prod) {
             $listproduct = new listproductbonderec();
             $listproduct->quantite=$prod["quantite"];
             $listproduct->Libelle=$prod["Libelle"];
