@@ -70,3 +70,4 @@ Route::get('rachat/nbfn','fournisseurController@nombreFournisseur');
 //facturefournisseurs
 Route::apiResource('facturef', 'facturefController');
 Route::apiResource('facture','factureController');
+Route::apiResource('bondereception', 'BonDeReceptionController');
