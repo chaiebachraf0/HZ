@@ -45,6 +45,9 @@ class ListProductAchate extends Controller
         $facture->save();
         return response()->json('List saved');
 
+
+        
+
     }
 
     /**

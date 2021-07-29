@@ -72,3 +72,6 @@ Route::apiResource('facturef', 'facturefController');
 Route::apiResource('facture','factureController');
 Route::apiResource('bondereceptions', 'BonDeReceptionController');
 Route::get('/calcul' , 'productController@nombreproduits');
+Route::apiResource('/paiements', 'PaiementController');
+
+Route::get('/paiement/facture/{id}','PaiementController@getListPaiementOfFacture');  

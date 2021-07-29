@@ -116,6 +116,7 @@ class facturefController extends Controller
      */
     public function store(Request $request)
     {
+        
         $facturef = new facturef();
         $facturef->id_fournisseur = $request->id_fournisseur;
         $facturef->Ref_Facture = $request->Ref_Facture;
@@ -135,12 +136,14 @@ class facturefController extends Controller
 /*         $facture->ListProduct = [];
  */
         $facturef->save();
-        foreach ($request->ListProduct as $prod) {
+        
+                foreach ($request->ListProduct as $prod) {
             $listproduct = new ListProductAchat();
             $listproduct->quantite=$prod["quantite"];
             $listproduct->Libelle=$prod["Libelle"];
             $listproduct->id_product=$prod["id_product"];
             $listproduct->id_facture=$facturef->id;
+           // dd($listproduct);
             $listproduct->save();
         }
         return response()->json('Facture saved');

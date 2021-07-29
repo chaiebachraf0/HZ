@@ -43,6 +43,8 @@ class paiementController extends Controller
         $paiement->paye = $request->paye;
         $paiement->date_reglement = $request->date_reglement;
         $paiement->date_echenace = $request->date_echenace;
+        $paiement->id_facture = $request->id_facture;
+        
         $paiement->save();
         return response()->json('List saved');
     }
@@ -55,6 +57,7 @@ class paiementController extends Controller
      */
     public function show($id)
     {
+        
         
     $k = paiement::select('id')->where('id_facture',$id)->first();
 
@@ -105,4 +108,17 @@ class paiementController extends Controller
         $paiement->delete();
         return response()->json('deleted');
     }
+
+
+
+    public function getListPaiementOfFacture( $id)
+    {
+        $paiements= paiement::all()->where('id_facture',$id);
+
+    
+
+    return response()->json( $paiements);
+    }
+
+    
 }

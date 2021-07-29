@@ -13,7 +13,7 @@ class CreateListProductAchatTable extends Migration
      */
     public function up()
     {
-        Schema::create('_list_product_achat', function (Blueprint $table) {
+        Schema::create('list_product_achats', function (Blueprint $table) {
             $table->id();
             $table->integer('quantite');
             $table->string('id_product');
@@ -33,6 +33,6 @@ class CreateListProductAchatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_list_product_achat');
+        Schema::dropIfExists('list_product_achats');
     }
 }
