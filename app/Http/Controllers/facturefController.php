@@ -183,9 +183,9 @@ class facturefController extends Controller
     public function update(Request $request, $id)
     {
         $facturef = facturef::find($id);
-        $facturef->id_fournisseur = $request->id_fournisseur;
+        /*$facturef->id_fournisseur = $request->id_fournisseur;
         $facturef->Ref_Facture = $request->Ref_Facture;
-        $facturef->id_product = $request->id_product;
+       // $facturef->id_product = $request->id_product;
         $facturef->Montant_TTC = $request->Montant_TTC;
         $facturef->Montant_TVA = $request->Montant_TVA;
         $facturef->Etat = $request->Etat;
@@ -197,7 +197,22 @@ class facturefController extends Controller
         $facturef->Timbre_fiscale = $request->Timbre_fiscale;
         $facturef->Libelle = $request->Libelle;
         $facturef->date_creation = $request->date_creation;
-        $facturef->Taxe_Applique = $request->Taxe_Applique;
+        $facturef->Taxe_Applique = $request->Taxe_Applique;*/
+
+        $facturef->id_fournisseur = $request->id_fournisseur;
+        $facturef->Ref_Facture = $request->Ref_Facture;
+        $facturef->Montant_TTC = $request->Montant_TTC;
+        $facturef->Montant_TVA = $request->Montant_TVA;
+        $facturef->Etat = $request->Etat;
+        $facturef->Total_HT = $request->Total_HT;
+        $facturef->date_echeance = $request->date_echeance;
+        // $facture->quantite_entre = $request->quantite_entre;
+        $facturef->Nom_fournisseur = $request->Nom_fournisseur;
+        $facturef->note = $request->note;
+        $facturef->Timbre_fiscale = $request->Timbre_fiscale;
+        // $facture->Libelle = $request->Libelle;
+        $facturef->date_creation = $request->date_creation;
+        
         $facturef->save();
         return response()->json('Facture updated');
     }

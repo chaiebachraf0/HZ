@@ -75,3 +75,7 @@ Route::get('/calcul' , 'productController@nombreproduits');
 Route::apiResource('/paiements', 'PaiementController');
 
 Route::get('/paiement/facture/{id}','PaiementController@getListPaiementOfFacture');  
+
+Route::get('/resteretard' , 'PaiementController@calculResteEnRetard');
+
+
