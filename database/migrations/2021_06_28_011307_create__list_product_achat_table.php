@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 class CreateListProductAchatTable extends Migration
 {
     /**
@@ -13,7 +11,7 @@ class CreateListProductAchatTable extends Migration
      */
     public function up()
     {
-        Schema::create('_list_product_achat', function (Blueprint $table) {
+        Schema::create('list_product_achat', function (Blueprint $table) {
             $table->id();
             $table->integer('quantite');
             $table->string('id_product');
@@ -33,6 +31,6 @@ class CreateListProductAchatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_list_product_achat');
+        Schema::dropIfExists('list_product_achat');
     }
 }

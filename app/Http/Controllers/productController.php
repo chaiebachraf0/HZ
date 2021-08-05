@@ -34,7 +34,5 @@ class productController extends Controller
         $product->delete();
         return response()->json(null, 204);
     }
-    public function nombreproduits(){
-        return response()->json(product::count(), 200);
-    }
+  
 }

@@ -69,4 +69,10 @@ Route::delete('rachat/deletefournisseur/{id}','fournisseurController@deleteFourn
 Route::get('rachat/nbfn','fournisseurController@nombreFournisseur');
 //facturefournisseurs
 Route::apiResource('facturef', 'facturefController');
+Route::get('facturef/nbff','facturefController@nombrefacturef');
 Route::apiResource('facture','factureController');
+Route::apiResource('devis','devisController');
+Route::apiResource('commandecl','commclController');
+Route::apiResource('bonlivraison','bonlController');
+Route::apiResource('commandeachat','commandeachatController');
+Route::apiResource('inventaire','inventaireController');
