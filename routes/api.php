@@ -70,12 +70,13 @@ Route::get('rachat/nbfn','fournisseurController@nombreFournisseur');
 //facturefournisseurs
 Route::apiResource('facturef', 'facturefController');
 Route::apiResource('facture','factureController');
+Route::apiResource('devis','devisController');
+Route::apiResource('commandecl','commclController');
+Route::apiResource('bonlivraison','bonlController');
+Route::apiResource('commandeachat','commandeachatController');
+Route::apiResource('inventaire','inventaireController');
 Route::apiResource('bondereceptions', 'BonDeReceptionController');
 Route::get('/calcul' , 'productController@nombreproduits');
 Route::apiResource('/paiements', 'PaiementController');
-
-Route::get('/paiement/facture/{id}','PaiementController@getListPaiementOfFacture');  
-
+Route::get('/paiement/facture/{id}','PaiementController@getListPaiementOfFacture');
 Route::get('/resteretard' , 'PaiementController@calculResteEnRetard');
-
-
