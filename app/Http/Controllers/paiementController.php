@@ -148,7 +148,7 @@ class paiementController extends Controller
    ->get();*/
 
    $sommereste = DB::table('paiements')
-            ->where('date_echenace','>',Carbon::now())
+            ->where('date_echenace','<',Carbon::now())
             ->selectRaw('min(reste) as min, id_facture')
             ->groupBy('id_facture')
             ->get();

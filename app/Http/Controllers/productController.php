@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\client;
 use App\Models\facture;
+use App\Models\facturef;
 use App\Models\fournisseur;
 use App\Models\product;
 use Illuminate\Http\Request;
@@ -43,9 +44,10 @@ class productController extends Controller
 
         $List=[
             $nomnbre_produit = product::count(),
-            $nomnbre_facture = facture::count(),
-            $nomnbre_client = client::count(),
+            $nomnbre_facturef = facturef::count(),
             $nomnbre_fournisseur = fournisseur::count(),
+            $nomnbre_client = client::count(),
+            $nomnbre_facturec= facture::count(),
 
 
         ];
