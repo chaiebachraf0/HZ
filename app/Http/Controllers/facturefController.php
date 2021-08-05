@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\facturef;
 use App\Models\fournisseur;
 use App\Models\ListProductAchat;
 use App\Models\product;
-
 class facturefController extends Controller
 {
      /**
@@ -29,62 +26,6 @@ class facturefController extends Controller
         ];
         return response()->json($List);
     }
-    public function cherchefournisseur($id){
-
-/*         $fournisseur= Fournisseur::where('id', '=', $id)->first();
- *//*         return   $fournisseur = DB::table('Fournisseur')->where('id', '=', $id)->get();
- */
- /*       if(DB::table('Fournisseur')->where('id',$id)->exists()){
-        $fournisseur = DB::table('Fournisseur')->where('id', $id)->first();
-        dd($fournisseur->NAME);
-        return $fournisseur->NAME;
-      } */
-/*             $query = DB::table('Fournisseur')->select('Name');
- */
-
-/*              return $fournisseur= Fournisseur::where('id', '=', $id)->first();
- */
-    }
-    public function chercheproduit($id){
-
-/*         if(DB::table('Produit')->where('id',$id)->exists()){
-            $produit = DB::table('Produit')->where('id', $id)->first();
-            $List=[
-                $produit->Libellé,
-                $produit->TVA,
-                $produit->PRIX_VENTE
-            ];
-            dd($List);
-            return $List;
-
-
-    } */
-    }
-
-
-/* public function calcul_tva(){
- *//*     $this->produit = new Produit();
- */
-   // $tva =Produit::pluck('TVA', 'id')->all();
-   // $ht = Produit::pluck('PRIX_ACHAT','id')->all();
-
-/*    $prduit = Produit::all();
-
-   foreach($prduit as $p){
-       $calcul = $p->TVA * $p->PRIX_ACHAT;
-       echo($calcul);
-       echo ('<br>');
-       return response()->json(
-        $calcul
-    , 200);
-
-   } */
-
-/*     dd($calcul);
- */
-/* }
- */
-
     public function index()
     {
        // $Facture = Facture::with(relations:'getFournisseur')->get();
@@ -97,17 +38,6 @@ class facturefController extends Controller
 
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -148,7 +78,6 @@ class facturefController extends Controller
         }
         return response()->json('Facture saved');
     }
-
     /**
      * Display the specified resource.
      *
@@ -160,7 +89,6 @@ class facturefController extends Controller
         $facturef = facturef::find($id);
         return response()->json($facturef);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -172,7 +100,6 @@ class facturefController extends Controller
         $facturef = facturef::find($id);
         return response()->json($facturef);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -216,7 +143,6 @@ class facturefController extends Controller
         $facturef->save();
         return response()->json('Facture updated');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -229,21 +155,8 @@ class facturefController extends Controller
         $facturef->delete();
         return response()->json('deleted');
     }
-
-   /* public function getfacturedata (Request $request, $id){
-
-        $facturesdetails = Facture::where('id', $id)->first();
-        if(isset($facturesdetails)) {
-            return response()->json([
-                'status' =>true,
-                'message' => 'sucess',
-                'company'     => $facturesdetails,
-            ], 200);
-        } else {
-            return response()->json([
-                'status' =>false,
-                'message' => 'can \'t find a registered company',
-            ], 400);
-        }
-    }*/
+    
+    public function nombrefacturef(){
+        return response()->json(facturef::count(),200);
+    }
 }

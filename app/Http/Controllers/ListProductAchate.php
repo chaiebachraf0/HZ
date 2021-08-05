@@ -19,7 +19,6 @@ class ListProductAchate extends Controller
             $facture
         , 200);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +28,6 @@ class ListProductAchate extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -38,18 +36,12 @@ class ListProductAchate extends Controller
      */
     public function store(Request $request)
     {
-        //
         $facture = new ListProductAchat();
         $facture->id_product = $request->id_product;
         $facture->quantite = $request->quantite;
         $facture->save();
         return response()->json('List saved');
-
-
-        
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -60,7 +52,6 @@ class ListProductAchate extends Controller
     {
        //
     }
-
     /**
      * Show the form for editing the specified resource.
      *

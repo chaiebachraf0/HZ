@@ -27,82 +27,18 @@ class factureController extends Controller
         ];
         return response()->json($List);
     }
-    public function cherchefournisseur($id){
-
-/*         $fournisseur= Fournisseur::where('id', '=', $id)->first();
- *//*         return   $fournisseur = DB::table('Fournisseur')->where('id', '=', $id)->get();
- */
- /*       if(DB::table('Fournisseur')->where('id',$id)->exists()){
-        $fournisseur = DB::table('Fournisseur')->where('id', $id)->first();
-        dd($fournisseur->NAME);
-        return $fournisseur->NAME;
-      } */
-/*             $query = DB::table('Fournisseur')->select('Name');
- */
-
-/*              return $fournisseur= Fournisseur::where('id', '=', $id)->first();
- */
-    }
-    public function chercheproduit($id){
-
-/*         if(DB::table('Produit')->where('id',$id)->exists()){
-            $produit = DB::table('Produit')->where('id', $id)->first();
-            $List=[
-                $produit->Libellé,
-                $produit->TVA,
-                $produit->PRIX_VENTE
-            ];
-            dd($List);
-            return $List;
-
-
-    } */
-    }
-
-
-/* public function calcul_tva(){
- *//*     $this->produit = new Produit();
- */
-   // $tva =Produit::pluck('TVA', 'id')->all();
-   // $ht = Produit::pluck('PRIX_ACHAT','id')->all();
-
-/*    $prduit = Produit::all();
-
-   foreach($prduit as $p){
-       $calcul = $p->TVA * $p->PRIX_ACHAT;
-       echo($calcul);
-       echo ('<br>');
-       return response()->json(
-        $calcul
-    , 200);
-
-   } */
-
-/*     dd($calcul);
- */
-/* }
- */
-
     public function index()
     {
        // $Facture = Facture::with(relations:'getFournisseur')->get();
         //dd($Facture);
 
-            $facture= facture::all();
-            return response()->json($facture, 200);
+            $facture = facture::all();
+            return response()->json(
+                $facture
+            , 200);
+
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -128,7 +64,6 @@ class factureController extends Controller
         // $facture->Taxe_Applique = $request->Taxe_Applique;
         // $facture->ListProduct = $request->ListProduct;
 /*         $facture->ListProduct = []; */
-
             $facture->save();
             foreach ($request->ListProduct as $prod) {
             $listproduct = new ListProductvente();
@@ -140,7 +75,6 @@ class factureController extends Controller
         }
         return response()->json('Facture saved');
     }
-
     /**
      * Display the specified resource.
      *
@@ -152,7 +86,6 @@ class factureController extends Controller
         $facture = facture::find($id);
         return response()->json($facture);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -193,7 +126,6 @@ class factureController extends Controller
         $facture->save();
         return response()->json('Facture updated');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -206,21 +138,8 @@ class factureController extends Controller
         $facture->delete();
         return response()->json('deleted');
     }
+    public function nombrefacture(){
+        return response()->json(facture::count(), 200);
+    }
 
-   /* public function getfacturedata (Request $request, $id){
-
-        $facturesdetails = Facture::where('id', $id)->first();
-        if(isset($facturesdetails)) {
-            return response()->json([
-                'status' =>true,
-                'message' => 'sucess',
-                'company'     => $facturesdetails,
-            ], 200);
-        } else {
-            return response()->json([
-                'status' =>false,
-                'message' => 'can \'t find a registered company',
-            ], 400);
-        }
-    }*/
 }

@@ -40,18 +40,14 @@ class productController extends Controller
         return response()->json(null, 204);
     }
     public function nombreproduits(){
-
-
         $List=[
             $nomnbre_produit = product::count(),
             $nomnbre_facturef = facturef::count(),
             $nomnbre_fournisseur = fournisseur::count(),
             $nomnbre_client = client::count(),
             $nomnbre_facturec= facture::count(),
-
-
         ];
-
-        return response()->json($List);  
+        return response()->json($List);
     }
+
 }

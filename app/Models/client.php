@@ -8,6 +8,6 @@ class client extends Model
     public $timestamps = false;
     protected $fillable =['name','type','raisonsociale','matfiscale','civilite','email','adress','ntelephone','delai','reference'];
     public function produits(){
-        return $this->belongsToMany('App\Models\product', 'factures');
+        return $this->belongsToMany('App\Models\product', 'facture');
     }
 }
