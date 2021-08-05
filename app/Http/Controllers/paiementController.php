@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\paiement;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 class paiementController extends Controller
 {
@@ -12,6 +16,11 @@ class paiementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+
+     
     public function index()
     {
         $paiement = paiement::all();
@@ -43,8 +52,11 @@ class paiementController extends Controller
         $paiement->paye = $request->paye;
         $paiement->date_reglement = $request->date_reglement;
         $paiement->date_echenace = $request->date_echenace;
+        $paiement->id_facture = $request->id_facture;
+
         $paiement->save();
         return response()->json('List saved');
+
     }
 
     /**
@@ -56,11 +68,13 @@ class paiementController extends Controller
     public function show($id)
     {
         
-    $k = paiement::select('id')->where('id_facture',$id)->first();
+        
+    $k = paiement::select('id')->where('id_facture',$id);
 
     $paiement = paiement::find($k);
 
     return response()->json($paiement);
+
     }
 
     /**
@@ -83,6 +97,7 @@ class paiementController extends Controller
      */
     public function update(Request $request,$id)
     {
+        
         $paiement = paiement::find($id);
         $paiement->reste = $request->reste;
         $paiement->paye = $request->paye;
@@ -105,4 +120,51 @@ class paiementController extends Controller
         $paiement->delete();
         return response()->json('deleted');
     }
+
+
+
+    public function getListPaiementOfFacture( $id)
+    {
+        //$paiements= paiement::all()->where('id_facture',$id);
+       $pai= DB::table('paiements')->where('id_facture', $id)->get();
+
+        //dd($paiements);
+        //echo("eeee");
+    
+
+    return response()->json($pai,200);
+    
+
+    
+    }
+
+
+    public function calculResteEnRetard(){
+
+       // $sommereste=DB::table('paiements')->where('date_echenace','>',Carbon::now());
+       /*  echo($sommereste); */
+    /*$sommereste= paiement::groupBy('id_facture')
+   ->selectRaw('min(reste) as min, id_facture')
+   ->get();*/
+
+   $sommereste = DB::table('paiements')
+            ->where('date_echenace','<',Carbon::now())
+            ->selectRaw('min(reste) as min, id_facture')
+            ->groupBy('id_facture')
+            ->get();
+
+            $sumRetard=0;
+   
+        //$lastone=$sommereste::groupBy('id_facture')->get();
+        foreach ($sommereste as $element) {
+            //echo($element->min);
+            $sumRetard+=$element->min;
+        }
+
+        return response()->json(array(
+            "sumRetard" => $sumRetard),200);
+    
+    }
+
+    
 }

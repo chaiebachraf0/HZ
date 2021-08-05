@@ -1,5 +1,10 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\Models\client;
+use App\Models\facture;
+use App\Models\facturef;
+use App\Models\fournisseur;
 use App\Models\product;
 use Illuminate\Http\Request;
 class productController extends Controller
@@ -34,5 +39,15 @@ class productController extends Controller
         $product->delete();
         return response()->json(null, 204);
     }
-  
+    public function nombreproduits(){
+        $List=[
+            $nomnbre_produit = product::count(),
+            $nomnbre_facturef = facturef::count(),
+            $nomnbre_fournisseur = fournisseur::count(),
+            $nomnbre_client = client::count(),
+            $nomnbre_facturec= facture::count(),
+        ];
+        return response()->json($List);
+    }
+
 }

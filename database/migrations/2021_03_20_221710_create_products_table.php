@@ -30,7 +30,7 @@ class CreateProductsTable extends Migration
             $table->integer('Enstock')->default(0);
             $table->string('desc')->default(null);
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

@@ -14,6 +14,8 @@ class CreatePaiementsTable extends Migration
     public function up()
     {
         Schema::create('paiements', function (Blueprint $table) {
+         
+            $table->id();
             $table->integer('reste');
             $table->integer('paye');
             $table->date('date_reglement');
@@ -21,7 +23,7 @@ class CreatePaiementsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('id_facture') ;
         
-            $table->foreign('id_facture')->references('id')->on('factures'); 
+            $table->foreign('id_facture')->references('id')->on('facturefs'); 
         });
     }
 

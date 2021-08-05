@@ -1,8 +1,10 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-class CreateListProductAchatTable extends Migration
+
+class CreateListproductdereceptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -11,15 +13,12 @@ class CreateListProductAchatTable extends Migration
      */
     public function up()
     {
-        Schema::create('list_product_achats', function (Blueprint $table) {
+        Schema::create('listproductdereceptions', function (Blueprint $table) {
             $table->id();
             $table->integer('quantite');
             $table->string('id_product');
             $table->string('Libelle');
             $table->integer('id_facture');
-/*
-            $table->unsignedBigInteger('facture_id') ;
-            $table->foreign('facture_id')->references('id')->on('factures'); */
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateListProductAchatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_product_achats');
+        Schema::dropIfExists('listproductdereceptions');
     }
 }
