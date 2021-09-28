@@ -77,6 +77,11 @@ Route::apiResource('commandeachat','commandeachatController');
 Route::apiResource('inventaire','inventaireController');
 Route::apiResource('bondereceptions', 'BonDeReceptionController');
 Route::get('/calcul' , 'productController@nombreproduits');
+Route::get('/dashbord' , 'productController@dashbord');
+Route::get('/dashbordfacture' , 'productController@dashbordfacture');
+Route::get('/endette' , 'productController@endette');
+
+
 Route::apiResource('/paiements', 'PaiementController');
 Route::get('/paiement/facture/{id}','PaiementController@getListPaiementOfFacture');
 Route::get('/resteretard' , 'PaiementController@calculResteEnRetard');
